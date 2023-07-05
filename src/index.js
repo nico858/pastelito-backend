@@ -11,10 +11,10 @@ import { checkApiKey } from './middlewares/auth.handler.js';
 import { errorHandler, boomErrorHandler, ormErrorHandler } from './middlewares/error.handler.js';
 
 const app = express();
-const port = proccess.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://nico858.github.io/pastelito-frontend/',
     credentials: true,
 }));
 routerAPi(app);
