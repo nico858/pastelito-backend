@@ -6,7 +6,7 @@ import { config } from '../../../config/config.js';
 const options = {
     clientID: config.googleClientId,
     clientSecret: config.googleClientSecret,
-    callbackURL: "http://localhost:3000/callback",
+    callbackURL: "https://pastelito-backend.onrender.com/callback",
     passReqToCallback   : true
 }
 
