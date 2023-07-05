@@ -11,7 +11,7 @@ import { checkApiKey } from './middlewares/auth.handler.js';
 import { errorHandler, boomErrorHandler, ormErrorHandler } from './middlewares/error.handler.js';
 
 const app = express();
-const port = 3000;
+const port = proccess.env.PORT || 3000;
 
 app.use(cors({
     origin: 'http://localhost:5173',
