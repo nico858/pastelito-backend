@@ -14,7 +14,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: 'https://localhost:5173',
+    origin: 'https://nico858.github.io',
     credentials: true,
 }));
 routerAPi(app);
