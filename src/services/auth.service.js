@@ -53,7 +53,7 @@ export default class AuthService {
       from: config.smtpEmail,
       to: `${user.email}`,
       subject: "Recovery password email",
-      html: `<b>Hi ${user.firstName} ${user.lastName} <br> Click in this link to recover your password ${link}</b>`,
+      html: `<b>Hi id:${user.id} <br> Click in this link to recover your password ${link}</b>`,
     }
     const response = await this.sendMail(mail);
     return response;
