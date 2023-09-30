@@ -28,7 +28,7 @@
     "swagger-ui-express": "^4.6.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "migrations:generate": "sequelize-cli migration:generate --name",
@@ -45,5 +45,8 @@
   "bugs": {
     "url": "https://github.com/nico858/my-store/issues"
   },
-  "homepage": "https://github.com/nico858/my-store#readme"
+  "homepage": "https://github.com/nico858/my-store#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
