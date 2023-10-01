@@ -178,8 +178,8 @@ router.get("/:id",
 );
 
 router.post("/",
-  passport.authenticate('jwt', {session: false}),
-  checkRoles('admin'),
+  // passport.authenticate('jwt', {session: false}),
+  // checkRoles('admin'),
   validatorHandler(createProductSchema, "body"),
   async (req, res, next) => {
     try {
