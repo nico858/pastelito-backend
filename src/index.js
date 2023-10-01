@@ -13,10 +13,7 @@ import { errorHandler, boomErrorHandler, ormErrorHandler } from './middlewares/e
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors({
-    origin: 'https://client-benzema-c.vercel.app',
-    credentials: true,
-}));
+app.use(cors());
 routerAPi(app);
 
 app.use(express.json());
