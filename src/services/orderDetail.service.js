@@ -24,7 +24,7 @@ export default class OrderDetailService {
       if(selectedProduct.stock < quantity) {
         throw boom.badRequest('There is not enough stock');
       }
-      const price = selectedProduct.price * quantity;
+      const price = multi(selectedProduct.price * quantity);
 
       const newOrderDetail = await OrderDetail.create({
         orderDateId: newOrderDate.id,
@@ -69,3 +69,9 @@ export default class OrderDetailService {
     return { id };
   }
 }
+
+const multi = (a, b) => {
+  return a * b;
+}
+
+export { multi };

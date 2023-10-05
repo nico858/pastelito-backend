@@ -8,6 +8,8 @@ import UserService from './user.service.js';
 
 const service = new UserService();
 
+const apiFront = 'http://localhost:5173';
+
 export default class AuthService {
 
   async getUser(email, password) {
@@ -45,40 +47,15 @@ export default class AuthService {
     if (!user) {
       throw boom.unauthorized();
     }
-    // const payload = { sub: user.id };
-    // const token = jwt.sign(payload, config.jwtSecret, { expiresIn: '15min' });
-    const passwordGenerator = () =>{
-      const lenght = 9;
-
-    const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
-    const numbers = '0123456789';
-    const symbols = '!@#$%^&*()_+=';
-
-    const allChars = upperCase + lowerCase + numbers + symbols;
-
-    let password = '';
-
-    while(lenght > password.length) {
-        password += allChars[Math.floor(Math.random() * allChars.length)];
-    }
-
-    return password;
-    }
-
-    const password = passwordGenerator()
-
-    const hash = await bcrypt.hash(password, 10);
-
-    //link for change user password in comming
-    const link = `http://localhost:5173/confirmpass/`;
-
-    await service.update(user.id, { userPassword: hash});
+    const payload = { sub: user.id };
+    const token = jwt.sign(payload, config.jwtSecret, { expiresIn: '15min' });
+    const link = `${apiFront}/confirmPass?token=${token}`;
+    await service.update(user.id, { recoveryToken: token });
     const mail = {
       from: config.smtpEmail,
       to: `${user.email}`,
       subject: "Recovery password email",
-      html: `<p>Hi dear ${user.firstName} this is your new password: <b>${password}</b></p>`
+      html: `<p>Hola ${user.firstName} <br>Por favor, accede a este enlace para iniciar el proceso de cambio de contraseña. Una vez dentro, podrás definir una nueva contraseña para tu cuenta.<br>${link}</p>`,
     }
     const response = await this.sendMail(mail);
     return response;
