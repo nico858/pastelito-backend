@@ -1,3 +1,21 @@
 # Dockerizing postgreSQL database
 
-# code goes here
+# not tested yet
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: store
+    ports:
+      - 5432:5432
+    volumes:
+      # defining the volume for the database, so that the data is persistent, named xcakes
+      - xcakes:/var/lib/postgresql/data
+# declaring the volume so it can be used among other services
+volumes:
+  xcakes:
+
