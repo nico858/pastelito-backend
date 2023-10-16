@@ -16,6 +16,9 @@ import { config } from '.././src/config/config.js';
 // );
 
 const connection = new Sequelize(config.dbLink, {
+    // linking to the dockerized database container, which is named 'db'
+    // not tested yet
+    host: 'db',
     dialect: 'postgres',
     protocol: 'postgres',
     dialectOptions: {
