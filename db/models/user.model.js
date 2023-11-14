@@ -42,7 +42,7 @@ export const UserModel = (connection, DataTypes) => {
     },
     role: {
       allowNull: false,
-      type: DataTypes.ENUM('admin', 'customer'),
+      type: DataTypes.ENUM('admin', 'customer', 'seller'),
       defaultValue: 'customer'
     },
     recoveryToken: {
