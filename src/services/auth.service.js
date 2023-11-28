@@ -8,7 +8,7 @@ import UserService from './user.service.js';
 
 const service = new UserService();
 
-const apiFront = 'http://localhost:5173';
+const apiFront = 'https://x-cakes.vercel.app/';
 
 export default class AuthService {
 
