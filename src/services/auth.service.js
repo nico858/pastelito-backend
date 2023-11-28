@@ -8,7 +8,7 @@ import UserService from './user.service.js';
 
 const service = new UserService();
 
-const apiFront = 'https://x-cakes.vercel.app/';
+const apiFront = 'https://x-cakes.vercel.app';
 
 export default class AuthService {
 
